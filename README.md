@@ -21,6 +21,7 @@ addPlants/addPlant.php
 $content = '{your domain}/user/pflanzen.php?id='.$itemID;
 ```
 ## Login
- - Username: Brodschneider
+Bitte kontaktieren Sie mich für den neuen Username bzw. Passwort.
 
- - Passwort: Blumen2019laden*
+## Kontakt
+Bei Fragen, bitte melden Sie sich einfach telefonisch bei mir!
