@@ -20,8 +20,14 @@ addPlants/addPlant.php
 ```
 $content = '{your domain}/user/pflanzen.php?id='.$itemID;
 ```
+in jedem .php File
+```
+$db = mysqli_connect("{url}", "{nutzer}", "{passwort}", "{datenbank}");
+```
+PS: bitte alles ohne '{' bzw. '}' einsetzten.
 ## Login
 Bitte kontaktieren Sie mich für den neuen Username bzw. Passwort.
 
 ## Kontakt
 Bei Fragen, bitte melden Sie sich einfach telefonisch bei mir!
+
