@@ -27,7 +27,7 @@ $db = mysqli_connect("{url}", "{nutzer}", "{passwort}", "{datenbank}");
 ```
 PS: bitte alles ohne '{' bzw. '}' einsetzten.
 ## Login
-Bitte kontaktieren Sie mich für die neune Logindaten.
+Bitte kontaktieren Sie mich für die neuen Logindaten.
 
 Der Login wurde nun auf ```{url}/login``` ausgelagert!
 
