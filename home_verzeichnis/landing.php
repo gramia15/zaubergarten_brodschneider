@@ -1,16 +1,5 @@
 <?php
 
-    session_start();
-
-    if ($_SESSION['login']==true || ($_POST['username']=="Brodschneider" && $_POST['password']=="ciscodisco")) {
-        echo "Login successful";
-        $_SESSION['login']=true;
-    }else{
-        $_SESSION['login']=false;
-        echo "Login invalid";
-        die();
-    }
-
     $db = mysqli_connect("localhost", "zaubergarten_zaubergarten", "ciscodisco", "zaubergarten_zaubergartendb");
     $db->set_charset("utf8");
 
@@ -19,6 +8,36 @@
         exit("Verbindungsfehler: ".mysqli_connect_error());
     }
 
+    session_start();
+
+    try {
+        $salt = "SELECT salt FROM User WHERE User = " . $_POST['username'];
+        $db_erg_salt = mysqli_query($db, $salt);
+
+        while ($row = $db_erg_salt->fetch_row()) {
+            $salt = $row[0];
+        }
+
+        $hash = "SELECT password FROM User WHERE User = " . $_POST['username'];
+        $db_erg_hash = mysqli_query($db, $hash);
+
+        while ($row = $db_erg_hash->fetch_row()) {
+            $hash = $row[0];
+        }
+
+        if ($_SESSION['login'] == true || hash("sha256",  $_POST['password'] . $salt) == $hash) {
+            echo "Login successful";
+            $_SESSION['login'] = true;
+        } else {
+            $_SESSION['login'] = false;
+            echo "Login invalid";
+            die();
+        }
+    }catch(Exception $e){
+        $_SESSION['login'] = false;
+        echo "Login invalid";
+        die();
+    }
 
     $id = $_GET['remove'];
     $art = $_GET['art'];
