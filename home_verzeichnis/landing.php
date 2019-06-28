@@ -8,23 +8,18 @@
         exit("Verbindungsfehler: ".mysqli_connect_error());
     }
 
-    session_start();
-
+	session_start();
     try {
         $salt = "SELECT salt FROM User WHERE User = " . $_POST['username'];
         $db_erg_salt = mysqli_query($db, $salt);
-
         while ($row = $db_erg_salt->fetch_row()) {
             $salt = $row[0];
         }
-
         $hash = "SELECT password FROM User WHERE User = " . $_POST['username'];
         $db_erg_hash = mysqli_query($db, $hash);
-
         while ($row = $db_erg_hash->fetch_row()) {
             $hash = $row[0];
         }
-
         if ($_SESSION['login'] == true || hash("sha256",  $_POST['password'] . $salt) == $hash) {
             echo "Login successful";
             $_SESSION['login'] = true;
@@ -61,14 +56,25 @@
     }
 
     $sql_pflanzen = "SELECT * FROM PflanzenView";
+    $sql_material = "SELECT * FROM Material";
+
+    if(isset($_GET["searchType"])){
+        $searchItem = $_GET["seachItem"];
+        if(strcmp($_GET["searchType"],"plfanze")==0){
+            $sql_pflanzen="SELECT * FROM PflanzenView WHERE botanischerName LIKE '%$searchItem%' OR deutschnerName LIKE '$searchItem';";
+            $sql_material = "SELECT * FROM Material WHERE 1=0;";
+        }
+        else{
+            $sql_material = "SELECT * FROM Material WHERE Name LIKE '%$searchItem%';";
+            $sql_pflanzen = "SELECT * FROM PflanzenView WHERE 1=0;";
+        }
+    }
 
     $db_erg_pflanzen = mysqli_query( $db, $sql_pflanzen );
     if ( ! $db_erg_pflanzen )
     {
         die('Ungültige Abfrage: ' . mysqli_error());
     }
-
-    $sql_material = "SELECT * FROM Material";
 
     $db_erg_material = mysqli_query( $db, $sql_material );
     if ( ! $db_erg_material )
@@ -109,6 +115,15 @@
             <button type="submit" class="btn btn-outline-primary waves-effect btn-xl">Material</button>
         </form>
     </div>
+    <form action="/landing.php" method="get">
+        <label>Suche: </label>
+        <input type="text" name="searchItem"/>
+        <label>Pflanze</label>
+        <input type="radio" name="searchTyoe" value="pflanze"/>
+        <label>Material</label>
+        <input type="radio" name="searchType" value="material"/>
+        <input type="submit" value="Suche">
+    </form>
     <div>
         <h1 style="margin-top: 5%">Pflanzen verwalten</h1>
         <table class="table table-hover">
