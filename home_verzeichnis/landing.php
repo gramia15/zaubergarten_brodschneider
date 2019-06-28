@@ -1,13 +1,16 @@
 <?php
 
-    $db = mysqli_connect("localhost", "zaubergarten_zaubergarten", "ciscodisco", "zaubergarten_zaubergartendb");
+    $db = mysqli_connect("p2f.at", "pfat_zaubergarten", "Ss5GHOOJ2F4Z", "pfat_zaubergarten");
     $db->set_charset("utf8");
 
     if(!$db)
     {
+		echo "db funkt ned";
         exit("Verbindungsfehler: ".mysqli_connect_error());
     }
 
+	echo "db funkt";
+	
 	session_start();
     try {
         $salt = "SELECT salt FROM User WHERE User = " . $_POST['username'];
@@ -34,6 +37,8 @@
         die();
     }
 
+	echo "nach authentifcation";
+	
     $id = $_GET['remove'];
     $art = $_GET['art'];
 

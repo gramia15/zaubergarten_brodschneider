@@ -63,10 +63,10 @@
         }
     }
 
-    $servername = "localhost";
-    $username = "zaubergarten_zaubergarten"; //temporary
-    $password = "ciscodisco";
-    $dbname = "zaubergarten_zaubergartendb";
+    $servername = "p2f.at";
+    $username = "pfat_zaubergarte";
+    $password = "Ss5GHOOJ2F4Z";
+    $dbname = "pfat_zaubergarten";
 
     $name = $_POST["name"];
     $menge = $_POST["menge"];
@@ -113,7 +113,7 @@
 
 
             $size          = '300';
-            $content       = 'www.zaubergarten.bplaced.net/user/material.php?id='.$itemID;
+            $content       = 'www.p2f.at/kaingratzdorf/user/material.php?id='.$itemID;
             $correction    = 'L';
             $encoding      = 'encoding';
 

@@ -8,7 +8,7 @@
         die();
 }
 
-$db = mysqli_connect("localhost", "zaubergarten_zaubergarten", "ciscodisco", "zaubergarten_zaubergartendb");
+$db = mysqli_connect("p2f.at", "pfat_zaubergarten", "Ss5GHOOJ2F4Z", "pfat_zaubergarten");
 $db->set_charset("utf8");
 
 if(!$db)

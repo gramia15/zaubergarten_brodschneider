@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Erstellungszeit: 17. Jun 2019 um 09:48
+-- Erstellungszeit: 28. Jun 2019 um 15:46
 -- Server-Version: 10.3.12-MariaDB-1:10.3.12+maria~stretch
 -- PHP-Version: 7.1.17
 
@@ -327,6 +327,25 @@ INSERT INTO `Sorte` (`SorteID`, `BotanischerName`, `DeutscherName`, `Volksmund`)
 (39, 'asd', 'asd', 'asd'),
 (40, '', '', ''),
 (41, 'TEST', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `User`
+--
+
+CREATE TABLE `User` (
+  `User` varchar(120) NOT NULL,
+  `Password` varchar(120) NOT NULL,
+  `Salt` varchar(120) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `User`
+--
+
+INSERT INTO `User` (`User`, `Password`, `Salt`) VALUES
+('Brodschneider', 'b1ce7d69aad3ac3248f11b037cc8586db10f83810a3d50e8d8f470fad9e51155', 'ViF-h1L}sKPjWzUG#ZPK');
 
 -- --------------------------------------------------------
 

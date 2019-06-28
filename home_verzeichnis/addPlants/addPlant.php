@@ -124,15 +124,10 @@
         $new_path = null;
     }
 
-
-
-    /*
-     * Creating variables for the database connection
-     */
-    $servername = "localhost";
-    $username = "zaubergarten_zaubergarten"; //temporary
-    $password = "ciscodisco";
-    $dbname = "zaubergarten_zaubergartendb";
+    $servername = "p2f.at";
+    $username = "pfat_zaubergarte";
+    $password = "Ss5GHOOJ2F4Z";
+    $dbname = "pfat_zaubergarten";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -284,7 +279,7 @@ else
 
 $itemID = $PflanzeID;
 $size          = '300';
-$content       = 'www.zaubergarten.bplaced.net/user/pflanzen.php?id='.$itemID;
+$content       = 'www.p2f.at/kaingratzdorf/user/pflanzen.php?id='.$itemID;
 $correction    = 'L';
 $encoding      = 'encoding';
 
